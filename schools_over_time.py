@@ -6,14 +6,13 @@ from easy_plot import *
 
 #Y
 avgs = lambda f: semester_averages(filter_semesters(semesters, f))
-print 'a'
 artsci_avgs, artsci_errs = avgs(ARTS_AND_SCIENCES)
-print 'e'
 engr_avgs, engr_errs = avgs(ENGINEERING)
-print 's'
 sages_avgs, sages_errs = avgs(SAGES)
 # bus_avgs, bus_errs = avgs(WEATHERHEAD)
 # mandel_avgs, mandel_errs = avgs(MANDEL)
+
+file_path = 'paper/figures/schools_over_time.pdf'
 
 data_sets = [
     (artsci_avgs, artsci_errs),
@@ -40,7 +39,7 @@ print 'plotting data...'
 
 fig = pyplot.figure()
 
-p.title('Average School Ratings Over Time')
+p.title('Average School Course Ratings Over Time')
 ax = fig.add_subplot(111)
 ax.set_autoscale_on(False)
 p.ylim(0.0, 4.0)
@@ -68,7 +67,7 @@ for i in range(len(data_sets)):
     plot_fit(local_sem_vals, data_sets[i][0], '%s-' % colors[i])
 p.legend([l[2] for l in lines], titles)
 
-p.savefig('paper/figures/artsci_over_time.pdf')
+p.savefig(file_path)
 
 import subprocess
-subprocess.call(['open', 'paper/figures/artsci_over_time.pdf'])
+subprocess.call(['open', file_path])
