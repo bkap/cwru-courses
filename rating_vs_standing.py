@@ -18,9 +18,11 @@ print numpy.corrcoef(standings, rankings)
 
 print 'importing matplotlib...'
 
+import matplotlib
+matplotlib.use('pdf')
 import pylab as p
 
 print 'plotting data...'
 
 p.plot(standings, rankings, 'bo', ms=1)
-p.show()
+p.savefig('paper/figures/rating_vs_standing.pdf')
