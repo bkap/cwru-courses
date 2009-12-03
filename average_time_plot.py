@@ -1,4 +1,3 @@
-print 'loading data...'
 from data import *
 from easy_plot import *
 import pylab as p
@@ -6,8 +5,7 @@ import matplotlib.pyplot as pyplot
 
 def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Something Over Time', ylabels=RATING_LABELS):
     p.cla()
-    print 'calculating averages...'
-
+    
     #Y
     avgs = lambda f: semester_averages(filter_semesters(semesters, f), score_by=score_by)
     artsci_avgs, artsci_errs = avgs(ARTS_AND_SCIENCES)
@@ -35,8 +33,6 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
     ]
 
     colors = ('r','g','b')
-
-    print 'plotting data...'
 
     fig = pyplot.figure()
 
@@ -66,7 +62,7 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
                                 yerr=data_sets[i][1], 
                                 fmt='%so' % colors[i], ms=1))
         plot_fit(local_sem_vals, data_sets[i][0], '%s-' % colors[i])
-    p.legend([l[2] for l in lines], titles, 'lower right')
+    p.legend([l[2] for l in lines], titles, 'lower left')
 
     p.savefig(file_path)
     return file_path

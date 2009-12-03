@@ -39,7 +39,7 @@ for code, courses in course_codes.iteritems() :
         not_sages.extend(courses)
 
 
-for type in [COURSE_RANKING, DIFFICULTY] :   
+for type in [COURSE_RANKING, WORKLOAD] :   
     engineering_score = getAverageScore(engineering,type)
     engineering_scores = [getScore(x,type) for x in engineering]
     artsci_score = getAverageScore(artsci, type)
