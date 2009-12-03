@@ -11,18 +11,28 @@ for sem in semesters:
 
 import pprint
 
-#pprint.pprint(department_ratings)
+pprint.pprint(department_ratings)
 #pprint.pprint(year_scores)
-for type in [DIFFICULTY, COURSE_RANKING] :
-    engineering = []
-    for course in SCHOOL_OF_ENGINEERING :
-        if course in course_codes :
-            engineering.extend(course_codes[course])
+engineering = []
+for course in SCHOOL_OF_ENGINEERING :
+    if course in course_codes :
+        engineering.extend(course_codes[course])
+artsci = []
+for course in ARTS_AND_SCIENCES :
+    if course in course_codes :
+        artsci.extend(course_codes[course])
+
+sages = []
+
+not_sages = []
+for code, courses in course_codes.iteritems() :
+    if code in SAGES :
+        sages.extend(courses)
+    else :
+        not_sages.extend(courses)
+
+for type in [COURSE_RANKING, DIFFICULTY] :   
     engineering_score = getAverageScore(engineering,type)
-    artsci = []
-    for course in ARTS_AND_SCIENCES :
-        if course in course_codes :
-            artsci.extend(course_codes[course])
     artsci_score = getAverageScore(artsci, type)
     import numpy
     print "engineering: %0.5f, %d, %0.5f" % (engineering_score,
@@ -30,3 +40,11 @@ for type in [DIFFICULTY, COURSE_RANKING] :
     print "artsci: %0.5f, %d, %0.5f" % (artsci_score, len(artsci),
     numpy.std([getScore(x,type) for x in artsci]))
 
+    sages_scores = [getScore(x,type) for x in sages]
+    not_sages_scores = [getScore(x,type) for x in not_sages]
+    sages_average = getAverageScore(sages,type)
+    not_sages_average = getAverageScore(not_sages,type)
+    print "sages: %0.5f, %0.5f, %d" % (sages_average,
+    numpy.std(sages_scores),len(sages_scores))
+    print "not sages: %0.5f, %0.5f, %d" % (not_sages_average,
+    numpy.std(not_sages_scores),len(not_sages_scores))
