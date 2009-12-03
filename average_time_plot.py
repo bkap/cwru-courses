@@ -11,7 +11,7 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
     artsci_avgs, artsci_errs = avgs(ARTS_AND_SCIENCES)
     engr_avgs, engr_errs = avgs(ENGINEERING)
     sages_avgs, sages_errs = avgs(SAGES)
-    # bus_avgs, bus_errs = avgs(WEATHERHEAD)
+    bus_avgs, bus_errs = avgs(WEATHERHEAD)
     # mandel_avgs, mandel_errs = avgs(MANDEL)
 
     file_path = 'paper/figures/%s.pdf' % file_name
@@ -32,7 +32,7 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
         # 'Mandel'
     ]
 
-    colors = ('r','g','b')
+    colors = ('r','g','b', 'c')
 
     fig = pyplot.figure()
 
