@@ -335,22 +335,13 @@ semesters = cPickle.load(open(EVALS,'rb'))
 
 course_codes = dict()
 all_courses =  []
-for sem,semester in semesters.items() :
-    for course in semester :
-        # if(course['coursename'] == 'EMSE203' and 17 not in course) : print(sem)
-        all_courses.append(course)
-
-course_codes = dict()
-all_courses =  []
-for sem,semester in semesters.items() :
-    for course in semester :
-        # if(course['coursename'] == 'EMSE203' and 17 not in course) : print(sem)
+for sem,semester in semesters.items():
+    for course in semester:
         all_courses.append(course)
 
 for course in all_courses :
     code = course['coursename'][:4]
-    if('O' in course['coursename'][4:]) :
-        #print(course['coursename'])
+    if('O' in course['coursename'][4:]):
         course['coursename'] = code + course['coursename'][4:].replace("O","0")
     try :
         if(int(course['coursename'][4:]) >= 400) :
@@ -363,6 +354,15 @@ for course in all_courses :
         course_codes[code] = [course]
     else :
         course_codes[code].append(course)
+
+sem_names = semesters.keys()
+years = sorted(list(set([n[-4:] for n in sem_names])))
+sorted_semester_names = []
+for year in years:
+    for n in ['spring%s' % year, 'fall%s' % year]:
+        if n in sem_names:
+            sorted_semester_names.append(n)
+print sorted_semester_names
 
 def getScore(course, criteria) :
     total = 0.
