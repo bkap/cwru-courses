@@ -31,8 +31,7 @@ for code, courses in course_codes.iteritems() :
     else :
         not_sages.extend(courses)
 
-from scipy.stats import ttest_ind
-import numpy
+from scipy.stats import ttest_ind, tstd
 for type in [COURSE_RANKING, DIFFICULTY] :   
     engineering_score = getAverageScore(engineering,type)
     engineering_scores = [getScore(x,type) for x in engineering]
@@ -40,9 +39,9 @@ for type in [COURSE_RANKING, DIFFICULTY] :
     artsci_scores = [getScore(x,type) for x in artsci]
     
     print "engineering: %0.5f, %d, %0.5f" % (engineering_score,
-        len(engineering), numpy.std( engineering_scores))
+        len(engineering), tstd( engineering_scores))
     print "artsci: %0.5f, %d, %0.5f" % (artsci_score, len(artsci),
-        numpy.std(artsci_scores))
+        tstd(artsci_scores))
     print ("T-score: engineering != artsci: t = %0.5f, p = %0.5f" %
         ttest_ind(engineering_scores, artsci_scores) )
     print ''
@@ -51,7 +50,7 @@ for type in [COURSE_RANKING, DIFFICULTY] :
     sages_average = getAverageScore(sages,type)
     not_sages_average = getAverageScore(not_sages,type)
     print "sages: %0.5f, %0.5f, %d" % (sages_average,
-    numpy.std(sages_scores),len(sages_scores))
+    tstd(sages_scores),len(sages_scores))
     print "not sages: %0.5f, %0.5f, %d" % (not_sages_average,
-    numpy.std(not_sages_scores),len(not_sages_scores))
+    tstd(not_sages_scores),len(not_sages_scores))
     print ''
