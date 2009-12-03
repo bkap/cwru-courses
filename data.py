@@ -2,6 +2,11 @@ import cPickle
 
 EVALS = "evals.pickle"
 
+STANDING_VALUES = [0.0, 1.0, 2.0, 3.0, 4.0]
+STANDING_LABELS = ['\nFreshman', '\nSophomore', '\nJunior', '\nSenior', '\nGraduate']
+RATING_VALUES = [0.0, 1.0, 2.0, 3.0, 4.0]
+RATING_LABELS = ['Poor', 'Fair', 'Good', 'Very Good', 'Excellent']
+
 STANDING = ('standing', dict(freshman=0, sophomore=1, junior=2, senior=3, graduate=4))
 
 ranking=dict(SA=4, A=3, M=2, D=1, SD=0)
@@ -329,22 +334,25 @@ subject_codes = {
     'WSTD': "WOMEN'S STUDIES                  ",
     'YES ': "PRE/COREQ(S) APPLY               ",
 }
+# Clean subject code data
 for k, v in subject_codes.iteritems():
     subject_codes[k] = subject_codes[k].strip()
 semesters = cPickle.load(open(EVALS,'rb'))
 
+# Build list of all courses
 course_codes = dict()
 all_courses =  []
 for sem,semester in semesters.items():
     for course in semester:
         all_courses.append(course)
 
+# Clean course code data
 for course in all_courses :
     code = course['coursename'][:4]
     if('O' in course['coursename'][4:]):
         course['coursename'] = code + course['coursename'][4:].replace("O","0")
     try :
-        if(int(course['coursename'][4:]) >= 400) :
+        if(int(course['coursename'][4:]) >= 400):
             continue
     except ValueError as e:
         print(course)
@@ -355,14 +363,19 @@ for course in all_courses :
     else :
         course_codes[code].append(course)
 
-sem_names = semesters.keys()
-years = sorted(list(set([n[-4:] for n in sem_names])))
-sorted_semester_names = []
-for year in years:
+SEM_NAMES = semesters.keys()
+YEARS = sorted(list(set([n[-4:] for n in SEM_NAMES])))
+SORTED_SEM_NAMES = []
+for year in YEARS:
     for n in ['spring%s' % year, 'fall%s' % year]:
-        if n in sem_names:
-            sorted_semester_names.append(n)
-print sorted_semester_names
+        if n in SEM_NAMES:
+            SORTED_SEM_NAMES.append(n)
+SEMESTER_VALMAP = {}
+i = 0.0
+for sem in SORTED_SEM_NAMES:
+    SEMESTER_VALMAP[sem] = i
+    i += 0.5
+SEMESTER_VALUES = sorted(SEMESTER_VALMAP.values())
 
 def getScore(course, criteria) :
     total = 0.

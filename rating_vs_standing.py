@@ -2,17 +2,14 @@ print 'loading data...'
 
 from data import *
 
-x_values = [0.0, 1.0, 2.0, 3.0, 4.0]
-x_labels = ['\nFreshman', '\nSophomore', '\nJunior', '\nSenior', '\nGraduate']
-y_values = [0.0, 1.0, 2.0, 3.0, 4.0]
-y_labels = ['E', 'VG', 'G', 'F', 'P']
-
 print 'parsing data...'
 
 standings = []
 rankings = []
 
 for course in all_courses:
+    if(int(course['coursename'][4:]) >= 400):
+        continue
     standings.append(getScore(course, STANDING))
     rankings.append(getScore(course, COURSE_RANKING))
 
@@ -31,8 +28,8 @@ import pylab as p
 print 'plotting data...'
 
 p.title('Overall Rating vs University Standing')
-p.xticks(x_values, x_labels, linespacing=2.0)
-p.yticks(y_values, y_labels)
+p.xticks(STANDING_VALUES, STANDING_LABELS, fontsize=10)
+p.yticks(RATING_VALUES, RATING_LABELS, fontsize=10)
 p.plot(standings, rankings, 'k,', ms=1, alpha=0.2)
 p.plot([0.0, 4.0], [fit[1], fit[1] + 4.0*fit[0]], 'r-')
 p.legend(['rating', 'regression'], 'lower right')
