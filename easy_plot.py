@@ -14,16 +14,16 @@ def filter_semesters(semesters, filter_list):
                 new_semesters[name].append(course)
     return new_semesters
 
-def semester_averages(semesters):
+def semester_averages(semesters, score_by=COURSE_RANKING):
     averages = {}
     for name, items in semesters.iteritems():
-        averages[name] = numpy.average([getScore(course, COURSE_RANKING) for course in items])
+        averages[name] = numpy.average([getScore(course, score_by) for course in items])
     
     errors = {}
     for name in semesters.keys():
         std_dev = 0.0
         for course in semesters[name]:
-            std_dev += (getScore(course, COURSE_RANKING) - averages[name])**2
+            std_dev += (getScore(course, score_by) - averages[name])**2
         std_dev = math.sqrt(std_dev/len(semesters[name]))
         errors[name] = std_dev/math.sqrt(len(semesters[name]))
     filtered_names = sorted(semesters.keys())

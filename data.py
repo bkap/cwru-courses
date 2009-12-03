@@ -4,17 +4,23 @@ EVALS = "evals.pickle"
 
 STANDING_VALUES = [0.0, 1.0, 2.0, 3.0, 4.0]
 STANDING_LABELS = ['\nFreshman', '\nSophomore', '\nJunior', '\nSenior', '\nGraduate']
-RATING_VALUES = [0.0, 1.0, 2.0, 3.0, 4.0]
+RATING_VALUES = STANDING_VALUES
 RATING_LABELS = ['Poor', 'Fair', 'Good', 'Very Good', 'Excellent']
+PACE_VALUES = STANDING_VALUES
+PACE_LABELS = ['Very Fast', 'Rather Fast', 'Moderate', 'Rather Slow', 'Very Slow']
 
 STANDING = ('standing', dict(freshman=0, sophomore=1, junior=2, senior=3, graduate=4))
 
 ranking=dict(SA=4, A=3, M=2, D=1, SD=0)
+
+DIFFICULTY = ('work_load',
+    dict(very_heavy=4,rather_heavy=3,moderate=2, rather_light=1, very_light=0))
+PACE = ('pace',
+    dict(very_fast=4, rather_fast=3, moderate=2, rather_slow=1, very_slow=0))
+INSTRUCTOR_ENGLISH = (6,ranking)
 COURSE_RANKING = (17,ranking)
 INSTRUCTOR_RANKING = (18,ranking)
-INSTRUCTOR_ENGLISH = (5,ranking)
-DIFFICULTY = ('work_load',dict(very_heavy=4,rather_heavy=3,moderate=2,
-rather_light=1, very_light=0))
+
 ENGINEERING = set([
     'EBME','ECES','ECHE','ECIV',
     'ECMP','EEAP','EECS','EIND',
