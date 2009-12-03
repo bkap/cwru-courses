@@ -3,17 +3,17 @@ import cPickle
 EVALS = "evals.pickle"
 
 STANDING_VALUES = [0.0, 1.0, 2.0, 3.0, 4.0]
-STANDING_LABELS = ['\nFreshman', '\nSophomore', '\nJunior', '\nSenior', '\nGraduate']
 RATING_VALUES = STANDING_VALUES
+STANDING_LABELS = ['\nFreshman', '\nSophomore', '\nJunior', '\nSenior', '\nGraduate']
 RATING_LABELS = ['Poor', 'Fair', 'Good', 'Very Good', 'Excellent']
-PACE_VALUES = STANDING_VALUES
 PACE_LABELS = ['Very Fast', 'Rather Fast', 'Moderate', 'Rather Slow', 'Very Slow']
+WORKLOAD_LABELS = ['Very Heavy', 'Rather Heavy', 'Moderate', 'Rather Light', 'Very Light']
 
 STANDING = ('standing', dict(freshman=0, sophomore=1, junior=2, senior=3, graduate=4))
 
 ranking=dict(SA=4, A=3, M=2, D=1, SD=0)
 
-DIFFICULTY = ('work_load',
+WORKLOAD = ('work_load',
     dict(very_heavy=4,rather_heavy=3,moderate=2, rather_light=1, very_light=0))
 PACE = ('pace',
     dict(very_fast=4, rather_fast=3, moderate=2, rather_slow=1, very_slow=0))

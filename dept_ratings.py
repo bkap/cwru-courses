@@ -31,7 +31,7 @@ for code, courses in course_codes.iteritems() :
     else :
         not_sages.extend(courses)
 
-for type in [COURSE_RANKING, DIFFICULTY] :   
+for type in [COURSE_RANKING, WORKLOAD] :   
     engineering_score = getAverageScore(engineering,type)
     artsci_score = getAverageScore(artsci, type)
     import numpy
