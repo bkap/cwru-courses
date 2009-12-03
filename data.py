@@ -15,7 +15,7 @@ INSTRUCTOR_RANKING = (18,ranking)
 INSTRUCTOR_ENGLISH = (5,ranking)
 DIFFICULTY = ('work_load',dict(very_heavy=4,rather_heavy=3,moderate=2,
 rather_light=1, very_light=0))
-SCHOOL_OF_ENGINEERING = set([
+ENGINEERING = set([
     'EBME','ECES','ECHE','ECIV',
     'ECMP','EEAP','EECS','EIND',
     'EMAC','EMAE','EMCH','EMSE',

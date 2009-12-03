@@ -14,7 +14,7 @@ import pprint
 #pprint.pprint(department_ratings)
 #pprint.pprint(year_scores)
 engineering = []
-for course in SCHOOL_OF_ENGINEERING :
+for course in ENGINEERING :
     if course in course_codes :
         engineering.extend(course_codes[course])
 artsci = []
