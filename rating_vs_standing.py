@@ -25,5 +25,9 @@ import pylab as p
 
 print 'plotting data...'
 
-p.plot(standings, rankings, 'bo', ms=1)
+p.plot(standings, rankings, 'k,', ms=1, alpha=0.2)
+p.plot([0.0, 4.0], [fit[1], fit[1] + 4.0*fit[0]], 'r-')
 p.savefig('paper/figures/rating_vs_standing.pdf')
+
+import subprocess
+subprocess.call(['open', 'paper/figures/rating_vs_standing.pdf'])
