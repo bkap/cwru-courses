@@ -3,7 +3,7 @@ from data import *
 orphans = set()
 for course in all_courses:
     cn = course['coursename'][:4]
-    if     cn not in SCHOOL_OF_ENGINEERING \
+    if     cn not in ENGINEERING \
        and cn not in SAGES \
        and cn not in ARTS_AND_SCIENCES \
        and cn not in WEATHERHEAD \
