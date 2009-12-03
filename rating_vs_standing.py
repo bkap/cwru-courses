@@ -7,10 +7,9 @@ print 'parsing data...'
 standings = []
 rankings = []
 
-with open('ratings_standings.csv', 'w') as f:
-    for course in all_courses:
-        standings.append(getScore(course, STANDING))
-        rankings.append(getScore(course, COURSE_RANKING))
+for course in all_courses:
+    standings.append(getScore(course, STANDING))
+    rankings.append(getScore(course, COURSE_RANKING))
 
 print "calculating correlation coefficient..."
 import numpy
