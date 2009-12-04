@@ -23,20 +23,20 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
     file_path = 'paper/figures/%s.pdf' % file_name
 
     data_sets = [
+        (artsci_avgs, artsci_errs),
         # (hardsci_avgs, hardsci_errs),
         (engr_avgs, engr_errs),
         # (softsci_avgs, softsci_errs),
-        (artsci_avgs, artsci_errs),
         (sages_avgs, sages_errs),
         # (bus_avgs, bus_errs),
         # (mandel_avgs, mandel_errs),
     ]
 
     titles = [
+        'Arts and Sciences',
         # 'Hard Sciences',
         'Engineering',
         # 'Soft Sciences',
-        'Arts and Sciences',
         'SAGES',
         # 'Weatherhead',
         # 'Mandel'
@@ -64,7 +64,7 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
     p.xticks(x_values, x_labels, fontsize=10)
 
     #Y axis labels
-    p.yticks(RATING_VALUES, ylabels, fontsize=10)
+    p.yticks(RATING_VALUES, ylabels, fontsize=8)
 
     lines = []
     for i in range(len(data_sets)):

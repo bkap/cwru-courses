@@ -1,3 +1,7 @@
+"""
+This script was used to help us sort subject codes into categories. It was not used to generate any statistical data.
+"""
+
 from data import *
 
 orphans = set()
