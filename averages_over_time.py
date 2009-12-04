@@ -4,7 +4,7 @@ from data import *
 import subprocess
 
 stuff_to_plot = (
-    (WORKLOAD, 'workload_over_time', 'Average Workload', WORKLOAD_LABELS),
+    # (WORKLOAD, 'workload_over_time', 'Average Workload', WORKLOAD_LABELS),
     # (PACE, 'pace_over_time', 'Average Pace', PACE_LABELS),
     # ((6,ranking), 'english_over_time', 'Average Instructor English'),
     # ((7,ranking), 'expectations_over_time', 'Average Clear Expectations'),
@@ -19,7 +19,7 @@ stuff_to_plot = (
     # ((16,ranking), 'textbook_over_time', 'Average Textbook Usefulness'),
     # ((17,ranking), 'rating_over_time', 'Average Course Rating'),
     # ((18,ranking), 'instructor_over_time', 'Average Instructor Rating'),
-    # ((19,ranking), 'ta_over_time', 'Average TA Rating'),
+    ((19,ranking), 'ta_over_time', 'Average TA Rating'),
     # ((20,ranking), 'lab_over_time', 'Average Lab Rating'),
 )
 
