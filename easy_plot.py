@@ -19,8 +19,6 @@ def semester_averages(semesters, score_by=COURSE_RANKING):
     for name, items in semesters.iteritems():
         good_courses = [getScore(course, score_by) for course in items if getScore(course, score_by) > -1.0]
         averages[name] = numpy.average(good_courses)
-        a, b = averages[name], numpy.average([getScore(course, score_by) for course in items])
-        if a != b: print a, b
     
     errors = {}
     for name in semesters.keys():
