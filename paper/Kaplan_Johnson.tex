@@ -16,12 +16,14 @@
 \maketitle
 
 \section{Introduction}
-Every semester, students at Case are asked to evaluate their classes. This provides a huge wealth of information but it is fairly useless it its raw form. For our analysis, we are utilizing all course evaluations submitted for undergraduate courses at Case Western from the fall of 1997 through the fall of 2006. Although the surveys are voluntary, subjecting them to selection bias, they have a high response rate. We used a custom script (written in Python) to parse the data. The source code used to generate the graphs can be seen at \url{http://www.github.com/irskep/cwru-courses}.
+Every semester, students at Case are asked to evaluate their classes. This provides a huge wealth of information but it is fairly useless it its raw form. Using the data collected for each class, we can find out more about how students feel about academics at Case Western Reserve. For our analysis, we are utilizing all course evaluations submitted for undergraduate courses at Case Western from the fall of 1997 through the fall of 2006. Although the surveys are voluntary, subjecting them to selection bias, they have a high response rate. We used a custom script (written in Python) to parse the data. The source code used to generate the graphs can be seen at \url{http://www.github.com/irskep/cwru-courses}.
 
 \section{Hypotheses}
 We decided to test the popular belief among students that the engineering classes here are more difficult and have a higher workload than the courses offered for the arts and sciences majors. In addition, we believed that SAGES classes would be significantly less popular than all the other courses.
 
 In addition to comparing the different sets of classes, we thought that as the average class standing of the students increased, the course score would increase as well since more of the upper level classes are electives or are part of the student's chosen major while classes consisting mostly of freshmen and sophomores would be more general education classes.
+
+Finally, we plan on looking at changes in student behavior over the 10 year time period. We believed that the ratings would improve slightly over the time period. Some of the questions asked on the survey, such as whether the class encourages critical thinking, identifies a major focus of universities in recent years.
 
 \section{Methodology}
 To start our analysis, we had to take our parsed data and clean it up. In our initial parsing, we found several missing pieces of data. In particular, the data for ENGR 145 and CHEM 111 (the introduction to chemistry classes for engineers) left values blank in the data file. Also, there were some typos. A few times, the course code had the letter ``O'' instead of the number 0.
