@@ -5,10 +5,10 @@ EVALS = "evals.pickle"
 
 STANDING_VALUES = [0.0, 1.0, 2.0, 3.0, 4.0]
 RATING_VALUES = STANDING_VALUES
-STANDING_LABELS = ['\nFreshman', '\nSophomore', '\nJunior', '\nSenior', '\nGraduate']
-RATING_LABELS = ['Poor', 'Fair', 'Good', 'Very Good', 'Excellent']
-PACE_LABELS = ['Very Slow', 'Rather Slow', 'Moderate', 'Rather Fast', 'Very Fast']
-WORKLOAD_LABELS = ['Very Light', 'Rather Light', 'Moderate', 'Rather Heavy', 'Very Heavy']
+STANDING_LABELS = ['Freshman (0)', 'Sophomore (1)', 'Junior (2)', 'Senior (3)', 'Graduate (4)']
+RATING_LABELS = ['Poor (0)', 'Fair (1)', 'Good (2)', 'Very Good (3)', 'Excellent (4)']
+PACE_LABELS = ['Very Slow (0)', 'Rather Slow (1)', 'Moderate (2)', 'Rather Fast (3)', 'Very Fast (4)']
+WORKLOAD_LABELS = ['Very Light (0)', 'Rather Light (1)', 'Moderate (2)', 'Rather Heavy (3)', 'Very Heavy (4)']
 
 STANDING = ('standing', dict(freshman=0, sophomore=1, junior=2, senior=3, graduate=4))
 
