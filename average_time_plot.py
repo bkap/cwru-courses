@@ -23,21 +23,21 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
     file_path = 'paper/figures/%s.pdf' % file_name
 
     data_sets = [
-        (hardsci_avgs, hardsci_errs),
+        # (hardsci_avgs, hardsci_errs),
         (engr_avgs, engr_errs),
-        (softsci_avgs, softsci_errs),
+        # (softsci_avgs, softsci_errs),
         (artsci_avgs, artsci_errs),
-        # (sages_avgs, sages_errs),
+        (sages_avgs, sages_errs),
         # (bus_avgs, bus_errs),
         # (mandel_avgs, mandel_errs),
     ]
 
     titles = [
-        'Hard Sciences',
+        # 'Hard Sciences',
         'Engineering',
-        'Soft Sciences',
+        # 'Soft Sciences',
         'Arts and Sciences',
-        # 'SAGES',
+        'SAGES',
         # 'Weatherhead',
         # 'Mandel'
     ]
@@ -69,9 +69,9 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
     lines = []
     for i in range(len(data_sets)):
         local_sem_vals = SEMESTER_VALUES[-len(data_sets[i][0]):]
-        # lines.append(p.errorbar(local_sem_vals, data_sets[i][0], 
-        #                         yerr=data_sets[i][1], 
-        #                         fmt='%so' % colors[i], ms=2))
+        p.errorbar(local_sem_vals, data_sets[i][0], 
+                    yerr=data_sets[i][1], 
+                    fmt='%so' % colors[i], ms=2)
         fit, newline = plot_fit(local_sem_vals, data_sets[i][0], styles[i])
         lines.append(newline)
         corrcoeff, prob = stats.pearsonr(local_sem_vals, data_sets[i][0])
