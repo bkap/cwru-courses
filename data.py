@@ -66,23 +66,23 @@ def getScore(course, criteria) :
     total = 0.
     students = 0
     if criteria[0] not in course :
-        return 0
+        return -1
     stat = course[criteria[0]]
     for key,value in criteria[1].items() :
         students += stat[key]
         total += stat[key] * value
    
     if students == 0 :
-        return 0
+        return -1
     return total/students
 
 def getAverageScore(courses,criteria) :
     total = 0.
     na = 0
     for course in courses:
-       score =  getScore(course,criteria) 
-       if not score :
-            na += 1
-       else :
+        score =  getScore(course,criteria) 
+        if score == -1 :
+             na += 1
+        else :
             total += score
     return total / (len(courses) - na)

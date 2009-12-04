@@ -38,13 +38,20 @@ for code, courses in course_codes.iteritems() :
     else :
         not_sages.extend(courses)
 
-
-for type in [COURSE_RANKING, WORKLOAD] :   
+TA = (19,ranking)
+i = 0
+name = ['ranking','workload','ta']
+for type in [COURSE_RANKING, WORKLOAD,TA] :   
+    print name[i]
+    i += 1
     engineering_score = getAverageScore(engineering,type)
     engineering_scores = [getScore(x,type) for x in engineering]
+    while -1 in engineering_scores :
+        engineering_scores.remove(-1)
     artsci_score = getAverageScore(artsci, type)
     artsci_scores = [getScore(x,type) for x in artsci]
-    
+    while -1 in artsci_scores :
+        artsci_scores.remove(-1)
     print "engineering: %0.5f, %d, %0.5f" % (engineering_score,
         len(engineering), tstd( engineering_scores))
     print "artsci: %0.5f, %d, %0.5f" % (artsci_score, len(artsci),
@@ -54,6 +61,10 @@ for type in [COURSE_RANKING, WORKLOAD] :
     print ''
     sages_scores = [getScore(x,type) for x in sages]
     not_sages_scores = [getScore(x,type) for x in not_sages]
+    for l in sages_scores,not_sages_scores :
+        while -1 in l:
+            l.remove(-1)
+
     sages_average = getAverageScore(sages,type)
     not_sages_average = getAverageScore(not_sages,type)
     print "sages: %0.5f, %0.5f, %d" % (sages_average,
