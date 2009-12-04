@@ -38,12 +38,18 @@ for code, courses in course_codes.iteritems() :
     else :
         not_sages.extend(courses)
 
+
+#This section here runs the 2-sample T-Tests
+#it goes through course ranking, workload, and TA
+#for art/sci vs. engineering and SAGES vs. everything else
 TA = (19,ranking)
 i = 0
 name = ['ranking','workload','ta']
 for type in [COURSE_RANKING, WORKLOAD,TA] :   
     print name[i]
     i += 1
+    #generate the average scores and get the list of scores for engineering
+    #and art/sci
     engineering_score = getAverageScore(engineering,type)
     engineering_scores = [getScore(x,type) for x in engineering]
     while -1 in engineering_scores :
@@ -52,6 +58,9 @@ for type in [COURSE_RANKING, WORKLOAD,TA] :
     artsci_scores = [getScore(x,type) for x in artsci]
     while -1 in artsci_scores :
         artsci_scores.remove(-1)
+    #print the mean, sample size, and sample standard deviation for engineering
+    #and art/sci. Also print the t-score from the comparison and the 2-tailed
+    #probability 
     print "engineering: %0.5f, %d, %0.5f" % (engineering_score,
         len(engineering_scores), tstd( engineering_scores))
     print "artsci: %0.5f, %d, %0.5f" % (artsci_score, len(artsci_scores),
@@ -59,6 +68,7 @@ for type in [COURSE_RANKING, WORKLOAD,TA] :
     print ("T-score: engineering != artsci: t = %0.5f, p = %0.5f" %
         ttest_ind(engineering_scores, artsci_scores) )
     print ''
+    #repeat the last two parts for SAGES and non-sages classes
     sages_scores = [getScore(x,type) for x in sages]
     not_sages_scores = [getScore(x,type) for x in not_sages]
     for l in sages_scores,not_sages_scores :
