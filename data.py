@@ -4,8 +4,7 @@ from filters import *
 EVALS = "evals.pickle"
 
 #these are the labels used for the graph
-STANDING_VALUES = [0.0, 1.0, 2.0, 3.0, 4.0]
-RATING_VALUES = STANDING_VALUES
+RATING_VALUES = [0.0, 1.0, 2.0, 3.0, 4.0]
 STANDING_LABELS = ['Freshman (0)', 'Sophomore (1)', 'Junior (2)', 'Senior (3)', 'Graduate (4)']
 RATING_LABELS = ['Poor (0)', 'Fair (1)', 'Good (2)', 'Very Good (3)', 'Excellent (4)']
 PACE_LABELS = ['Very Slow (0)', 'Rather Slow (1)', 'Moderate (2)', 'Rather Fast (3)', 'Very Fast (4)']
