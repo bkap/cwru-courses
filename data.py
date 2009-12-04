@@ -7,7 +7,7 @@ STANDING_VALUES = [0.0, 1.0, 2.0, 3.0, 4.0]
 RATING_VALUES = STANDING_VALUES
 STANDING_LABELS = ['\nFreshman', '\nSophomore', '\nJunior', '\nSenior', '\nGraduate']
 RATING_LABELS = ['Poor', 'Fair', 'Good', 'Very Good', 'Excellent']
-PACE_LABELS = ['Very Fast', 'Rather Fast', 'Moderate', 'Rather Slow', 'Very Slow']
+PACE_LABELS = ['Very Slow', 'Rather Slow', 'Moderate', 'Rather Fast', 'Very Fast']
 WORKLOAD_LABELS = ['Very Light', 'Rather Light', 'Moderate', 'Rather Heavy', 'Very Heavy']
 
 STANDING = ('standing', dict(freshman=0, sophomore=1, junior=2, senior=3, graduate=4))
