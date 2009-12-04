@@ -1,3 +1,38 @@
+"""
+This is a positively monstrous (i.e. bad) script which turns course evaluation data from text files into Python objects. Format is like so:
+
+data{
+    'seasonYEAR':[  #really this is just the file name of the data
+        {
+            'coursename':'SUBJ999',
+            'section':'probably blank',
+            'instructor':'some guy',
+            'course_fit': string which is one of:
+                ('major_required', 'tech_in_major', 
+                'core_required', 'minor_option', 
+                'open_elective'),
+            'standing': string which is one of:
+                ('freshman', 'sophomore', 'junior', 
+                'senior', 'graduate'),
+            'pace': string which is one of:
+                ('very_fast', 'rather_fast', 'moderate', 
+                'rather_slow', 'very_slow'),
+            'work_load': string which is one of:
+                ('very_heavy', 'rather_heavy', 'moderate', 
+                'rather_light', 'very_light'),
+            # Then I got lazy and started just referring to question number
+            5: string which is one of:
+                ('SA', 'A', 'M', 'D', 'SD', 'NA')
+                which actually makes very little sense for questions 17-20, which
+                actually ask for ('E', 'VG' 'G', 'F', 'P'),
+            6: same kind of string,
+            ...
+            20: same kind of string
+        }
+    ]
+}
+"""
+
 import re, cPickle
 
 data = {
