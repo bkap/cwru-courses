@@ -16,7 +16,7 @@
 \maketitle
 
 \section{Introduction}
-Every semester, students at Case are asked to evaluate their classes. This provides a huge wealth of information but it is fairly useless it its raw form. For our analysis, we are utilizing all course evaluations submitted for undergraduate courses at Case Western from the fall of 1997 through the fall of 2006.  Although the surveys are voluntary, subjecting them to selection bias, they have a high response rate. We used a custom script (written in Python) to parse the data.
+Every semester, students at Case are asked to evaluate their classes. This provides a huge wealth of information but it is fairly useless it its raw form. For our analysis, we are utilizing all course evaluations submitted for undergraduate courses at Case Western from the fall of 1997 through the fall of 2006. Although the surveys are voluntary, subjecting them to selection bias, they have a high response rate. We used a custom script (written in Python) to parse the data. The source code used to generate the graphs can be seen at \url{http://www.github.com/irskep/cwru-courses}.
 
 \section{Hypotheses}
 We decided to test the popular belief among students that the engineering classes here are more difficult and have a higher workload than the courses offered for the arts and sciences majors. In addition, we believed that SAGES classes would be significantly less popular than all the other courses.
@@ -29,7 +29,11 @@ To start our analysis, we had to take our parsed data and clean it up. In our in
 Finally, we had to filter out irrelevant data. The first thing we did on reading in the data was to filter out graduate courses, which have a course number greater than 400. In addition, we had to filter out classes that had no responses for a particular category, such as rating the TA in courses that didn't have a TA. 
 
 \section{Course Rating and Academic Standing}
+To test our hypothesis that courses with more advanced students would get higher ratings, we mad a scatter plot of course ratings over academic standings and fit a regression line to it. The standard error on the line was very high, about 0.7 in a range of 0.0-4.0, so it is clear that a student's standing has little effect on course ratings. Our hypothesis was disproven.
 
+\begin{center}
+    \includegraphics[width=5in]{figures/rating_vs_standing.pdf}
+\end{center}
 
 \section{Arts and Sciences vs. Engineering}
 We observed several things with this wealth of data (we had over 8,000 data points). First of all, we know, with a confidence level of 99.9\%, that classes for the college of arts and sciences rate higher than classes for the school of engineering. Using the scale where 0= poor and 4 = Excellent with the other variables in between, the 1,595 classes in the School of Engineering received an average rating of 2.56, with a standard deviation of .63398. The 6,510 classes in the College of Arts and Sciences had an average rating of 2.92 with a standard deviation of 0.65572. Using a 2-sample Student's T distribution gave a T score of about -20, which corresponds to a probability of less than .000001.
@@ -44,12 +48,9 @@ We also examined the early data from the SAGES program. The 466 SAGES classes in
 However, the difference in workload between SAGES classes (2.12244$\pm$0.4) and non-SAGES classes (2.088$\pm$0.531) was not significant. Based on this early data, students were not pleased with the SAGES program even though the courses themselves weren't more time consuming than their other classes.
 
 \section{Trends Across Time}
-In addition to comparing the different groups of courses, we also searched for trends across time. Our data covers 19 semesters, from the fall of 1997 to the fall of 2006. We plotted the average score in several categories, stratified again by school. Attached are graphs containing the data and regression lines for the College of Arts and Sciences, the School Engineering, and SAGES. The Weatherhead School of Management and the Mandel Center were excluded due to an insufficient number of data points.
+In addition to comparing the different groups of courses, we also searched for trends across time. Our data covers 19 semesters, from the fall of 1997 to the fall of 2006. We plotted the average score in several categories, stratified again by school. The graphs containing the data and regression lines for the College of Arts and Sciences, the School Engineering, and SAGES are included in Appendix B, labeled with the question numbers from the survey. The Weatherhead School of Management and the Mandel Center were excluded due to an insufficient number of data points.
 
-Overall, we noticed that there was very little change during the 10 year period observed. Even though some of the regression lines were statistically significant (> 95\%), the slope of the line was minute. One trend we noticed is that the SAGES results are very scattered. The results for SAGES vary greatly from year to year. The SAGES results also had high standard errors (marked on the charts). This is probably because SAGES was still in its experimental stages at the time and the seminar format means that the students' experiences will depend on the professor and the subject of the seminar.
-
-\section{Conclusions}\label{conclusions}
-Conclusions.
+Overall, we noticed that there was very little change during the 10 year period observed. Even though some of the regression lines were statistically significant (> 95\%), the slope of the line was minute. One trend we noticed is that the SAGES results are very scattered. The results for SAGES vary greatly from year to year. The SAGES results also had high standard errors for each semester (marked on the charts). This is probably because SAGES was still in its experimental stages at the time and the seminar format means that the students' experiences will depend on the professor and the subject of the seminar.
 
 \appendix
 
@@ -81,7 +82,6 @@ Conclusions.
 
 \section{Graphs}
 \begin{center}
-    \includegraphics[width=5in]{figures/rating_vs_standing.pdf} \\
     \includegraphics[width=5in]{figures/3_pace_over_time.pdf} \\
     \includegraphics[width=5in]{figures/4_workload_over_time.pdf} \\
     \includegraphics[width=5in]{figures/5_command_over_time.pdf} \\

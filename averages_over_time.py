@@ -26,4 +26,5 @@ stuff_to_plot = (
 
 for args in stuff_to_plot:
     #plot() returns the file path
-    subprocess.call(['open', plot(*args)])
+    plot(*args)
+    # subprocess.call(['open', ])

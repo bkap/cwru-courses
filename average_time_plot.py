@@ -76,7 +76,7 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
         lines.append(newline)
         corrcoeff, prob = stats.pearsonr(local_sem_vals, data_sets[i][0])
         
-        more_info = ':    y=%0.3fx + %0.3f, p=%0.3f' % (fit[0], fit[1], prob)
+        more_info = ':    y=%0.3fx+%0.3f, p=%0.3f' % (fit[0], fit[1], prob)
         
         titles[i] += more_info
     p.legend([l[0] for l in lines], titles, 'lower left', prop=prop)
