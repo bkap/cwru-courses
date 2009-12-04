@@ -16,3 +16,10 @@ To get Python for Windows, you can download it for free from http://www.python.o
 These files also depends on the numpy and scipy libraries, which can be
 downloaded from http://scipy.org and matplotlib, which can
 be downloaded from http://matplotlib.sourceforge.net
+
+
+The original data we processed (repaired for the most part) can be found in the
+raw_data/ folder in a human. The extracted data is stored in evals.pickle and
+can be read with Python's pickle module. All of the generated figures are
+stored as PDFs in paper/figures/. The TeX version of our report as well as the
+generated PDF are located in paper/.
