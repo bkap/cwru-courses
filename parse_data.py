@@ -7,6 +7,7 @@ data{
             'coursename':'SUBJ999',
             'section':'probably blank',
             'instructor':'some guy',
+            'count':'number of responses as a string
             'course_fit': string which is one of:
                 ('major_required', 'tech_in_major', 
                 'core_required', 'minor_option', 
