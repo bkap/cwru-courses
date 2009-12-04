@@ -53,8 +53,8 @@ for type in [COURSE_RANKING, WORKLOAD,TA] :
     while -1 in artsci_scores :
         artsci_scores.remove(-1)
     print "engineering: %0.5f, %d, %0.5f" % (engineering_score,
-        len(engineering), tstd( engineering_scores))
-    print "artsci: %0.5f, %d, %0.5f" % (artsci_score, len(artsci),
+        len(engineering_scores), tstd( engineering_scores))
+    print "artsci: %0.5f, %d, %0.5f" % (artsci_score, len(artsci_scores),
         tstd(artsci_scores))
     print ("T-score: engineering != artsci: t = %0.5f, p = %0.5f" %
         ttest_ind(engineering_scores, artsci_scores) )
