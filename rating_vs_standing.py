@@ -15,11 +15,18 @@ for course in all_courses:
 
 print "calculating correlation coefficient..."
 import numpy
+import math
+mstand = sum(standings) / len(standings)
+#print math.sqrt(sum((x-mstand)**2 for x in standings) / (len(standings)-2))
+
 fit =  numpy.polyfit(standings, rankings, 1)
 print "y = %0.5fx + %0.5f" % (fit[0],fit[1])
 print "r = %0.5f" % numpy.corrcoef(standings, rankings)[0][1]
-print 'importing matplotlib...'
-
+def err(x,y) :
+    exp = fit[0] * x + fit[1]
+    return (y-exp)**2
+print "stderr: %0.5f" % math.sqrt(sum(err(x,y) for x,y in
+zip(standings,rankings)) / (len(standings) - 2))
 import matplotlib
 matplotlib.use('pdf')
 import pylab as p
