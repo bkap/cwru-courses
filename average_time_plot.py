@@ -1,7 +1,11 @@
 from data import *
 from easy_plot import *
 import pylab as p
-import matplotlib.pyplot as pyplot
+from matplotlib import pyplot
+from matplotlib import font_manager
+from scipy import stats
+
+prop = matplotlib.font_manager.FontProperties(size=10)
 
 def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Something Over Time', ylabels=RATING_LABELS):
     p.cla()
@@ -9,6 +13,8 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
     #Y
     avgs = lambda f: semester_averages(filter_semesters(semesters, f), score_by=score_by)
     artsci_avgs, artsci_errs = avgs(ARTS_AND_SCIENCES)
+    hardsci_avgs, hardsci_errs = avgs(HARD_SCIENCES)
+    softsci_avgs, softsci_errs = avgs(SOFT_SCIENCES)
     engr_avgs, engr_errs = avgs(ENGINEERING)
     sages_avgs, sages_errs = avgs(SAGES)
     bus_avgs, bus_errs = avgs(WEATHERHEAD)
@@ -17,22 +23,27 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
     file_path = 'paper/figures/%s.pdf' % file_name
 
     data_sets = [
-        (artsci_avgs, artsci_errs),
-        (engr_avgs, engr_errs),
+        (hardsci_avgs, hardsci_errs),
+        (softsci_avgs, softsci_errs),
+        # (artsci_avgs, artsci_errs),
+        # (engr_avgs, engr_errs),
         (sages_avgs, sages_errs),
         # (bus_avgs, bus_errs),
         # (mandel_avgs, mandel_errs),
     ]
 
     titles = [
-        'Arts and Sciences',
-        'Engineering',
+        'Hard Sciences',
+        'Soft Sciences',
+        # 'Arts and Sciences',
+        # 'Engineering',
         'SAGES',
         # 'Weatherhead',
         # 'Mandel'
     ]
 
     colors = ('r','g','b', 'c')
+    styles = ('r-', 'g-', 'b-', 'c-')
 
     fig = pyplot.figure()
 
@@ -60,9 +71,14 @@ def plot(score_by=COURSE_RANKING, file_name='something_over_time', title='Someth
         local_sem_vals = SEMESTER_VALUES[-len(data_sets[i][0]):]
         lines.append(p.errorbar(local_sem_vals, data_sets[i][0], 
                                 yerr=data_sets[i][1], 
-                                fmt='%so' % colors[i], ms=1))
-        plot_fit(local_sem_vals, data_sets[i][0], '%s-' % colors[i])
-    p.legend([l[2] for l in lines], titles, 'lower left')
+                                fmt='%so' % colors[i], ms=2))
+        fit = plot_fit(local_sem_vals, data_sets[i][0], styles[i])
+        corrcoeff, prob = stats.pearsonr(local_sem_vals, data_sets[i][0])
+        
+        more_info = ':    y=%0.3fx + %0.3f, p=%0.3f' % (fit[0], fit[1], prob)
+        
+        titles[i] += more_info
+    p.legend([l[2] for l in lines], titles, 'lower left', prop=prop)
 
     p.savefig(file_path)
     return file_path

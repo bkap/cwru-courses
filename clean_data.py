@@ -12,3 +12,18 @@ for course in all_courses:
        and cn not in KNOWN_ORPHAN:
         orphans.add(cn)
 print orphans
+
+hard = []
+soft = []
+
+for code in sorted(subject_codes.keys()):
+    hs = 'x'
+    while hs != 'h' and hs != 's' and hs != 'i':
+        hs = raw_input(code)
+        if hs == 'h':
+            hard.append(code)
+        elif hs == 's':
+            soft.append(code)
+
+print hard
+print soft
