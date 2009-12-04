@@ -27,9 +27,6 @@ def err(x,y) :
     return (y-exp)**2
 stderr =  math.sqrt(sum(err(x,y) for x,y in
 zip(standings,rankings)) / (len(standings) - 2))
-# fit =  numpy.polyfit(standings, rankings, 1)
-# corrcoeff, prob = stats.pearsonr(standings, rankings)
-
 
 p.title('Overall Rating vs University Standing')
 p.xticks(STANDING_VALUES, STANDING_LABELS, fontsize=10)
@@ -37,7 +34,7 @@ p.yticks(RATING_VALUES, RATING_LABELS, fontsize=10)
 p.plot(standings, rankings, 'k,', ms=1, alpha=0.2)
 l = p.plot([0.0, 4.0], [fit[1], fit[1] + 4.0*fit[0]], 'r-')
 prop = matplotlib.font_manager.FontProperties(size=10)
-p.legend((l,), ('y=%0.3fx + %0.5f, r=%0.5f, stderr=%0.5f' % (fit[0], fit[1], r,
+p.legend((l,), ('y=%0.3fx+%0.5f, r=%0.5f, stderr=%0.5f' % (fit[0], fit[1], r,
 stderr),), 'lower right', prop=prop)
 p.savefig('paper/figures/rating_vs_standing.pdf')
 
